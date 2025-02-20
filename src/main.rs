@@ -1,9 +1,8 @@
 use bevy::prelude::*;
-use three_d::ThreeDPlugin;
-use window::WindowPlugin;
+use prelude::PreludePlugin;
+
+mod prelude;
 
 fn main() {
-    App::new()
-        .add_plugins((DefaultPlugins, WindowPlugin, ThreeDPlugin))
-        .run();
+    App::new().add_plugins(PreludePlugin).run();
 }
