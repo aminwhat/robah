@@ -4,8 +4,13 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-resolver = "2"                                                              # Important! wgpu/Bevy needs this!
-members = ["packages/asset_manager", "packages/three_d", "packages/window"]
+resolver = "2" # Important! wgpu/Bevy needs this!
+members = [
+    "packages/asset_manager",
+    "packages/startup",
+    "packages/three_d",
+    "packages/window",
+]
 
 [dependencies]
 bevy = { version = "0.15.2", features = ["dynamic_linking"] }
@@ -13,6 +18,7 @@ bevy_dylib = "0.15.2"
 window = { path = "packages/window" }
 three_d = { path = "packages/three_d" }
 asset_manager = { path = "packages/asset_manager" }
+startup = { path = "packages/startup" }
 
 # Enable a small amount of optimization in the dev profile.
 [profile.dev]
@@ -41,3 +47,13 @@ inherits = "release"
 opt-level = "s"
 # Strip all debugging information from the binary to slightly reduce file size.
 strip = "debuginfo"
+
+[profile.wasm-dev]
+inherits = "dev"
+opt-level = 1
+
+[profile.server-dev]
+inherits = "dev"
+
+[profile.android-dev]
+inherits = "dev"
