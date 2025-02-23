@@ -7,18 +7,22 @@ edition = "2021"
 resolver = "2" # Important! wgpu/Bevy needs this!
 members = [
     "packages/asset_manager",
-    "packages/startup",
+    "packages/dev_tools",
     "packages/three_d",
     "packages/window",
 ]
 
+[workspace.dependencies]
+bevy = { version = "0.15.2", features = ["dynamic_linking", "bevy_dev_tools"] }
+bevy_dylib = { version = "0.15.2" }
+
 [dependencies]
-bevy = { version = "0.15.2", features = ["dynamic_linking"] }
+bevy = { version = "0.15.2", features = ["dynamic_linking", "bevy_dev_tools"] }
 bevy_dylib = "0.15.2"
 window = { path = "packages/window" }
 three_d = { path = "packages/three_d" }
 asset_manager = { path = "packages/asset_manager" }
-startup = { path = "packages/startup" }
+dev_tools = { path = "packages/dev_tools" }
 
 # Enable a small amount of optimization in the dev profile.
 [profile.dev]

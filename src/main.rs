@@ -1,13 +1,17 @@
-use bevy::prelude::*;
+use bevy::{prelude::*, winit::WinitSettings};
+use dev_tools::DevToolsPlugin;
 use prelude::PreludePlugin;
-use startup;
 
 mod prelude;
 
 fn main() {
-    let result = startup::launch();
+    let mut app = App::new();
 
-    if result.is_ok() {
-        App::new().add_plugins(PreludePlugin).run();
-    }
+    app
+        // Only run the app when there is user input. This will significantly reduce CPU/GPU use.
+        .insert_resource(WinitSettings::desktop_app())
+        .add_plugins(DevToolsPlugin)
+        .add_plugins(PreludePlugin);
+
+    app.run();
 }
