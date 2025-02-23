@@ -2,6 +2,7 @@ use bevy::{prelude::*, winit::WinitSettings};
 use dev_tools::DevToolsPlugin;
 use prelude::PreludePlugin;
 
+mod features;
 mod prelude;
 
 fn main() {

@@ -1,3 +1,4 @@
+use crate::features::dashboard;
 use asset_manager::AssetManagerPlugin;
 use bevy::prelude::*;
 use std::env;
@@ -16,6 +17,8 @@ impl Plugin for PreludePlugin {
             ThreeDPlugin,
             AssetManagerPlugin,
         ));
+
+        app.add_systems(Startup, dashboard::start::dashboard_start);
     }
 }
 
